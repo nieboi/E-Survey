@@ -283,32 +283,42 @@ img {
   width: min(100%, 680px);
   height: 470px;
   overflow: hidden;
-  border-radius: 30px;
-  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 32px 32px 32px 120px;
+  border: 1px solid rgba(255,255,255,0.7);
   background: #dfe8f9;
+  box-shadow: 0 28px 54px rgba(18,31,56,0.18);
 }
 
 .photo-main img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: saturate(0.9) contrast(1.08);
+}
+
+.photo-main::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(18,42,88,0.38), rgba(18,42,88,0.18), transparent 60%);
 }
 
 .photo-badge {
   position: absolute;
-  left: 20px;
+  left: 22px;
   bottom: 22px;
-  background: rgba(18,28,47,0.72);
+  z-index: 1;
+  background: rgba(14,18,28,0.72);
   color: white;
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 18px;
   padding: 12px 16px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
 }
 
 .photo-badge small {
   display: block;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.78);
 }
 
 .photo-badge strong {
@@ -321,38 +331,55 @@ img {
   position: absolute;
   right: 0;
   bottom: 15px;
-  width: 250px;
-  padding: 12px;
-  border-radius: 26px;
-  background: rgba(255,255,255,0.9);
+  width: 286px;
+  padding: 10px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.85);
   border: 1px solid rgba(255,255,255,0.9);
+  box-shadow: 0 20px 38px rgba(18,31,56,0.14);
 }
 
-.portrait-card img {
+.leadership-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leader-tile {
+  overflow: hidden;
+  border-radius: 22px 22px 16px 22px;
+  border: 1px solid rgba(18,31,56,0.05);
+  background: #fff;
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 84% 100%, 0 100%);
+}
+
+.leader-tile img {
+  display: block;
   width: 100%;
-  height: 280px;
-  border-radius: 18px;
+  height: 170px;
   object-fit: cover;
+  filter: saturate(1.05) contrast(1.08);
 }
 
-.portrait-meta {
-  padding: 12px 4px 6px;
+.leader-meta {
+  padding: 12px 12px 14px;
 }
 
 .mini-tag {
+  display: inline-flex;
   margin-bottom: 8px;
   padding: 6px 10px;
-  background: rgba(19,136,8,0.12);
-  color: var(--green);
+  background: rgba(212,37,45,0.08);
+  color: var(--saffron-deep);
 }
 
-.portrait-meta strong {
+.leader-meta strong {
   display: block;
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 4px;
 }
 
-.portrait-meta small {
+.leader-meta small {
   color: var(--muted);
 }
 
