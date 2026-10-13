@@ -1,1 +1,108 @@
-(()=>{const pages=[...document.querySelectorAll('.page')],navs=[...document.querySelectorAll('.nav')],toast=document.getElementById('toast');let timer,count=4;function note(s){toast.textContent=s;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>toast.classList.remove('show'),2400)}function go(p){const el=document.getElementById(p);if(!el)return;pages.forEach(x=>x.classList.toggle('show',x===el));navs.forEach(x=>x.classList.toggle('active',x.dataset.page===p));window.scrollTo({top:0,behavior:'smooth'})}navs.forEach(n=>n.onclick=()=>go(n.dataset.page));document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));document.getElementById('finish').onclick=()=>note('Demo complete — no data was submitted or transmitted.');const modal=document.getElementById('modal');document.getElementById('addMember').onclick=()=>modal.classList.add('open');function close(){modal.classList.remove('open')}document.getElementById('close').onclick=close;document.getElementById('cancel').onclick=close;modal.onclick=e=>{if(e.target===modal)close()};document.getElementById('save').onclick=()=>{let name=document.getElementById('newName').value.trim();if(!name){document.getElementById('newName').focus();note('Enter a fictional member name first.');return}let relation=document.getElementById('newRelation').value,age=document.getElementById('newAge').value,ini=name.split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase().replace(/[<>&"]/g,'');let row=document.createElement('button');row.className='memberrow';let face=document.createElement('span');face.className='face blue';face.textContent=ini;let info=document.createElement('span'),b=document.createElement('b'),s=document.createElement('small'),arrow=document.createElement('span');b.textContent=name+' (Sample)';s.textContent=relation+(age?' · '+age+' years':'');arrow.textContent='›';info.append(b,s);row.append(face,info,arrow);row.onclick=()=>{document.querySelectorAll('.memberrow').forEach(x=>x.classList.remove('selected'));row.classList.add('selected');note('Selected '+name+' — fictional profile.')};document.getElementById('memberList').append(row);let person=document.createElement('div');person.className='person';let pf=document.createElement('div');pf.className='face blue';pf.textContent=ini;let pb=document.createElement('b');pb.textContent=name;let ps=document.createElement('small');ps.textContent=relation+(age?' · '+age+' years':'');let pr=document.createElement('span');pr.className='relation';pr.textContent=relation;person.append(pf,pb,ps,pr);document.getElementById('treeChildren').append(person);count++;document.getElementById('memberPill').textContent=count+' members';document.getElementById('memberTotal').textContent=count+' household members';document.getElementById('summaryCount').textContent=count+' members';document.getElementById('newName').value='';document.getElementById('newAge').value='';document.getElementById('newDob').value='';close();note('Sample family member added to demo.')};document.querySelectorAll('.memberrow').forEach(row=>row.onclick=()=>{document.querySelectorAll('.memberrow').forEach(x=>x.classList.remove('selected'));row.classList.add('selected');note('Selected sample family profile.')});const dob=document.getElementById('dob'),age=document.getElementById('age');function ageFrom(d){if(!d)return '';let b=new Date(d+'T00:00:00'),n=new Date(),a=n.getFullYear()-b.getFullYear();if(n.getMonth()<b.getMonth()||(n.getMonth()===b.getMonth()&&n.getDate()<b.getDate()))a--;return Math.max(0,a)}dob.onchange=()=>{age.value=ageFrom(dob.value)};document.getElementById('newDob').onchange=e=>{document.getElementById('newAge').value=ageFrom(e.target.value)};document.getElementById('ownsLand').onchange=e=>document.getElementById('landSummary').textContent=e.target.value;})();
+﻿(() => {
+  const pages = [...document.querySelectorAll('.page')];
+  const navs = [...document.querySelectorAll('.nav')];
+  const toast = document.getElementById('toast');
+  let timer;
+
+  function notify(message) {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(() => toast.classList.remove('show'), 2400);
+  }
+
+  function go(pageId) {
+    const target = document.getElementById(pageId);
+    if (!target) return;
+
+    pages.forEach((page) => page.classList.toggle('show', page === target));
+    navs.forEach((nav) => nav.classList.toggle('active', nav.dataset.page === pageId));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  navs.forEach((nav) => {
+    nav.addEventListener('click', () => go(nav.dataset.page));
+  });
+
+  document.querySelectorAll('[data-go]').forEach((button) => {
+    button.addEventListener('click', () => go(button.dataset.go));
+  });
+
+  const modal = document.getElementById('modal');
+  const addMemberBtn = document.getElementById('addMember');
+  const closeBtn = document.getElementById('close');
+  const cancelBtn = document.getElementById('cancel');
+  const saveBtn = document.getElementById('save');
+  const newName = document.getElementById('newName');
+  const newRelation = document.getElementById('newRelation');
+  const newAge = document.getElementById('newAge');
+  const memberList = document.getElementById('memberList');
+  const memberPill = document.getElementById('memberPill');
+  const treeChildren = document.getElementById('treeChildren');
+
+  function closeModal() {
+    if (modal) modal.classList.remove('open');
+  }
+
+  if (addMemberBtn) addMemberBtn.addEventListener('click', () => modal.classList.add('open'));
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+  if (modal) modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeModal();
+  });
+
+  if (saveBtn) saveBtn.addEventListener('click', () => {
+    const name = (newName?.value || '').trim();
+    if (!name) {
+      notify('Enter a fictional member name first.');
+      newName?.focus();
+      return;
+    }
+
+    const relation = newRelation?.value || 'Member';
+    const age = newAge?.value || '';
+    const initials = name
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((part) => part[0])
+      .join('')
+      .toUpperCase();
+
+    const button = document.createElement('button');
+    button.className = 'memberrow';
+    button.innerHTML = `
+      <span class="face blue">${initials}</span>
+      <span><b>${name} (Sample)</b><small>${relation}${age ? ` · ${age} years` : ''}</small></span>
+      <span>›</span>
+    `;
+
+    if (memberList) memberList.appendChild(button);
+
+    const person = document.createElement('div');
+    person.className = 'person';
+    person.innerHTML = `
+      <div class="face blue">${initials}</div>
+      <b>${name}</b>
+      <small>${relation}${age ? ` · ${age} years` : ''}</small>
+      <span class="relation">${relation}</span>
+    `;
+    if (treeChildren) treeChildren.appendChild(person);
+
+    if (memberPill) {
+      const count = memberList ? memberList.children.length : 0;
+      memberPill.textContent = `${count} members`;
+    }
+
+    closeModal();
+    newName.value = '';
+    newRelation.value = 'Spouse';
+    newAge.value = '';
+    notify('Member added to the sample family tree.');
+  });
+
+  const finish = document.getElementById('finish');
+  if (finish) {
+    finish.addEventListener('click', () => notify('Demo complete — no data was submitted or transmitted.'));
+  }
+})();
