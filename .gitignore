@@ -1,2 +1,7 @@
 ﻿.DS_Store
 Thumbs.db
+data/surveys.json
+data/surveys.json.tmp
+.env
+.env.*
+!.env.example

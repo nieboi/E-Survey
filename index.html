@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Janaseva eSurvey | Karnataka Digital Governance</title>
+    <title>Janaseva eSurvey | Private Survey Workspace</title>
     <meta
       name="description"
-      content="Karnataka-themed public service survey landing page with an interactive government eSurvey experience."
+      content="A Karnataka household survey workspace with private sign-in and cloud-saved household, family and asset details."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,26 +30,28 @@
         <a href="#home">Home</a>
         <a href="#app">App</a>
         <a href="#features">Features</a>
-        <a href="#contact">Contact</a>
+        <a href="#app">Survey app</a>
       </nav>
 
       <div class="topright">
-        <span class="tag">STATE INITIATIVE</span>
-        <button class="lang">ಕನ್ನಡ / English</button>
+        <span class="tag">PRIVATE SURVEY WORKSPACE</span>
+        <div class="account-bar" id="accountBar" hidden>
+          <span class="account-email" id="accountEmail"></span>
+          <button class="secondary" id="signOut" type="button">Sign out</button>
+        </div>
       </div>
     </header>
 
     <main class="page-shell">
       <section class="hero" id="home">
         <div class="hero-copy">
-          <span class="eyebrow">KARNATAKA DIGITAL PUBLIC SERVICE</span>
+          <span class="eyebrow">KARNATAKA HOUSEHOLD SURVEY DEMO</span>
           <h1>
             Citizen-first surveys with a
             <span>stronger Karnataka identity.</span>
           </h1>
           <p>
-            A clean public service experience for household data capture, family insights,
-            land records, and civic planning — designed to feel transparent, modern, and locally relevant.
+            Securely enter household, family, and asset information, then access your saved surveys after signing in.
           </p>
 
           <div class="cta-row">
@@ -59,54 +61,45 @@
 
           <div class="hero-stats">
             <div>
-              <strong>4.8L+</strong>
-              <span>records tracked</span>
+              <strong>Private</strong>
+              <span>sign-in protected</span>
             </div>
             <div>
-              <strong>92%</strong>
-              <span>field completion</span>
+              <strong>Save</strong>
+              <span>edit &amp; reopen records</span>
             </div>
             <div>
-              <strong>18+</strong>
-              <span>district touchpoints</span>
+              <strong>Cloud</strong>
+              <span>available on your devices</span>
             </div>
           </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="photo-main card-shadow">
+        <div class="hero-visual leadership-stack">
+          <div class="leader-tile leader-one">
             <img
-              src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80"
-              alt="Karnataka city and public service banner"
+              src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Narendra_Modi%2C_May_2019.jpg"
+              alt="Narendra Modi portrait"
+              loading="lazy"
             />
-            <div class="photo-badge">
-              <small>Public welfare</small>
-              <strong>Smart Governance</strong>
+            <div class="leader-meta">
+              <span class="mini-tag">National</span>
+              <strong>Shri. Narendra Modi</strong>
+              <small>Prime Minister of India</small>
+              <a class="photo-credit" href="https://commons.wikimedia.org/wiki/File:Narendra_Modi,_May_2019.jpg" target="_blank" rel="noreferrer">Photo: Prime Minister's Office · GODL-India</a>
             </div>
           </div>
-
-          <div class="portrait-card card-shadow leadership-stack">
-            <div class="leader-tile leader-one">
-              <img
-                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
-                alt="Narendra Modi portrait"
-              />
-              <div class="leader-meta">
-                <span class="mini-tag">National</span>
-                <strong>Shri. Narendra Modi</strong>
-                <small>Prime Minister of India</small>
-              </div>
-            </div>
-            <div class="leader-tile leader-two">
-              <img
-                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80"
-                alt="DK Shivakumar portrait"
-              />
-              <div class="leader-meta">
-                <span class="mini-tag">Karnataka</span>
-                <strong>Shri. D.K. Shivakumar</strong>
-                <small>Deputy Chief Minister</small>
-              </div>
+          <div class="leader-tile leader-two">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Siddaramaiah.jpg"
+              alt="Siddaramaiah portrait"
+              loading="lazy"
+            />
+            <div class="leader-meta">
+              <span class="mini-tag">Karnataka</span>
+              <strong>Shri Siddaramaiah</strong>
+              <small>Chief Minister of Karnataka</small>
+              <a class="photo-credit" href="https://commons.wikimedia.org/wiki/File:Siddaramaiah.jpg" target="_blank" rel="noreferrer">Photo: Muhammad Mahdi Karim · GFDL 1.2</a>
             </div>
           </div>
         </div>
@@ -114,16 +107,16 @@
 
       <section class="status-row" id="features">
         <div class="status-card strong">
-          <span class="status-label">Digital outreach</span>
-          <strong>Kannada-first citizen experiences</strong>
+          <span class="status-label">Private access</span>
+          <strong>Sign in to view your records</strong>
         </div>
         <div class="status-card">
-          <span class="status-label">Service reach</span>
-          <strong>Rural + urban integration</strong>
+          <span class="status-label">Survey workflow</span>
+          <strong>Household · family · assets</strong>
         </div>
         <div class="status-card">
-          <span class="status-label">Public trust</span>
-          <strong>Transparent, privacy-aware forms</strong>
+          <span class="status-label">Project status</span>
+          <strong>Demo project · not an official service</strong>
         </div>
       </section>
 
@@ -188,35 +181,27 @@
               <div class="mini-top">
                 <div>
                   <small>Household survey</small>
-                  <h3>District dashboard</h3>
+                  <h3>Private dashboard</h3>
                 </div>
-                <button>Live</button>
+                <button>Private</button>
               </div>
 
               <div class="mini-grid">
                 <div class="mini-card large">
-                  <span>Survey progress</span>
-                  <strong>78.4%</strong>
-                  <div class="progress"><i></i></div>
+                  <span>Survey records</span>
+                  <strong id="showcaseSurveys">0</strong>
                 </div>
                 <div class="mini-card">
                   <span>Households</span>
-                  <strong>2,480</strong>
+                  <strong id="showcaseHouseholds">0</strong>
                 </div>
                 <div class="mini-card">
                   <span>Families</span>
-                  <strong>1,064</strong>
+                  <strong id="showcaseFamilies">0</strong>
                 </div>
                 <div class="mini-card wide">
-                  <span>Recent activity</span>
-                  <div class="bars">
-                    <i style="height:30%"></i>
-                    <i style="height:46%"></i>
-                    <i style="height:60%"></i>
-                    <i style="height:72%"></i>
-                    <i style="height:84%"></i>
-                    <i style="height:95%"></i>
-                  </div>
+                  <span>Storage</span>
+                  <strong>Supabase cloud</strong>
                 </div>
               </div>
             </div>
@@ -224,7 +209,57 @@
         </div>
       </section>
 
-      <section class="layout app-layout" id="app">
+      <section class="auth-gate panel glass" id="authGate" aria-labelledby="authTitle">
+        <div class="auth-heading">
+          <small class="eyebrow">PRIVATE SURVEY WORKSPACE</small>
+          <h2 id="authTitle">Sign in to continue</h2>
+          <p id="authDescription">Your surveys are private to your account and sync through Supabase.</p>
+        </div>
+        <div class="auth-config-message" id="authConfigMessage" role="status">
+          Checking the Supabase connection…
+        </div>
+        <form class="auth-form" id="authForm" hidden>
+          <label>Email address
+            <input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com" />
+          </label>
+          <label>Password
+            <input id="authPassword" type="password" autocomplete="current-password" required placeholder="Your password" />
+          </label>
+          <label id="confirmPasswordLabel" hidden>Confirm password
+            <input id="authPasswordConfirm" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" />
+          </label>
+          <div class="auth-actions">
+            <button class="primary" id="authSubmit" type="submit">Sign in</button>
+            <button class="textlink" id="authModeToggle" type="button">Create an account</button>
+            <button class="textlink" id="resetPassword" type="button">Forgot password?</button>
+          </div>
+          <p class="auth-feedback" id="authFeedback" aria-live="polite"></p>
+        </form>
+        <form class="auth-form" id="recoveryForm" hidden>
+          <label>New password
+            <input id="recoveryPassword" type="password" autocomplete="new-password" minlength="8" required />
+          </label>
+          <label>Confirm new password
+            <input id="recoveryPasswordConfirm" type="password" autocomplete="new-password" minlength="8" required />
+          </label>
+          <div class="auth-actions">
+            <button class="primary" type="submit">Update password</button>
+            <button class="textlink" id="cancelRecovery" type="button">Back to sign in</button>
+          </div>
+          <p class="auth-feedback" id="recoveryFeedback" aria-live="polite"></p>
+        </form>
+        <div class="auth-config-help" id="authConfigHelp" hidden>
+          <strong>Finish Supabase setup</strong>
+          <ol>
+            <li>Create a Supabase project and run <code>supabase/schema.sql</code> in its SQL Editor.</li>
+            <li>Copy <code>.env.example</code> to <code>.env</code> and add your project URL and publishable/anon key.</li>
+            <li>Restart the app with <code>npm start</code>, then create your sign-in account here.</li>
+          </ol>
+          <p>Never put a service-role or secret key in this app.</p>
+        </div>
+      </section>
+
+      <section class="layout app-layout" id="app" hidden>
         <aside class="side glass">
           <div class="cap">SURVEY WORKSPACE</div>
           <button class="nav new-survey" data-page="household"><span>New survey</span></button>
@@ -237,9 +272,9 @@
 
           <div class="sidebottom">
             <div class="shield">✦</div>
-            <b>Privacy-first concept</b>
-            <p>Fictional data only. Not an official government service.</p>
-            <small>● Local demo mode</small>
+            <b>Private workspace</b>
+            <p>Sign-in and database rules keep each account's surveys separate.</p>
+            <small>● Supabase connected</small>
           </div>
         </aside>
 
@@ -249,7 +284,7 @@
               <div>
                 <small class="eyebrow">SURVEY WORKSPACE / OVERVIEW</small>
                 <h1>Household survey <em>workspace.</em></h1>
-                <p>A clearer, faster view of household information and survey progress.</p>
+                <p>Create and manage your household surveys across your signed-in devices.</p>
               </div>
               <button class="primary" data-go="household">＋ New survey ↗</button>
             </div>
@@ -257,16 +292,16 @@
             <div class="banner glass">
               <div class="sparkle">✧</div>
               <div>
-                <small class="eyebrow">FIELD SURVEY · CONCEPT PREVIEW</small>
+                <small class="eyebrow">PRIVATE SURVEY WORKSPACE</small>
                 <h2>Every household. One connected picture.</h2>
-                <p>Capture location, family members, education and asset details through a guided experience.</p>
+                <p>Enter household, family and asset details, then securely save and reopen your surveys.</p>
               </div>
               <div class="bannerart">
                 <div class="orb"></div>
                 <div class="floating">
-                  <small>HOUSEHOLD ID</small>
-                  <b>KS · 02841</b>
-                  <small>Sample record</small>
+                  <small>PRIVATE STORAGE</small>
+                  <b>Supabase cloud database</b>
+                  <small>Private to your account</small>
                 </div>
                 <span class="bubble">♙</span>
                 <span class="bubble pink">♙</span>
@@ -276,29 +311,38 @@
             <div class="metrics">
               <article class="metric glass">
                 <div>Survey records <span class="ico blue">▦</span></div>
-                <strong>248</strong>
-                <small><i>↗ 12.8%</i> vs. last period</small>
-                <div class="bars">▂ ▄ ▃ ▅ ▄ ▆ ▅ ▇</div>
+                <strong id="surveyCount">0</strong>
+                <small>Saved survey records</small>
               </article>
               <article class="metric glass">
-                <div>Households reviewed <span class="ico violet">⌂</span></div>
-                <strong>186</strong>
-                <small><i>↗ 8.4%</i> vs. last period</small>
-                <div class="bars violetbars">▂ ▃ ▅ ▄ ▆ ▅ ▇ ▆</div>
+                <div>Households recorded <span class="ico violet">⌂</span></div>
+                <strong id="reviewedCount">0</strong>
+                <small>Saved survey records</small>
               </article>
               <article class="metric glass">
                 <div>Family members <span class="ico orange">♧</span></div>
-                <strong>1,024</strong>
-                <small><i>↗ 18.2%</i> vs. last period</small>
-                <div class="bars orangebars">▂ ▃ ▄ ▃ ▆ ▅ ▇ ▆</div>
+                <strong id="memberCount">0</strong>
+                <small>People recorded</small>
               </article>
               <article class="metric glass">
-                <div>Review completion <span class="ico green">✓</span></div>
-                <strong>74.6<sup>%</sup></strong>
-                <small><i>↗ 4.6%</i> vs. last period</small>
-                <div class="bars greenbars">▂ ▄ ▃ ▅ ▄ ▆ ▇ ▆</div>
+                <div>Storage mode <span class="ico green">✓</span></div>
+                <strong>Cloud</strong>
+                <small>Saved to your account</small>
               </article>
             </div>
+            <article class="panel glass saved-surveys">
+              <div class="panelhead">
+                <div>
+                  <small class="eyebrow">YOUR RECORDS</small>
+                  <h3>Saved household surveys</h3>
+                  <p>Reopen, update or remove surveys saved to your account.</p>
+                </div>
+                <button class="secondary" id="refreshSurveys">Refresh list</button>
+              </div>
+              <div id="surveyList" class="survey-list" aria-live="polite">
+                <p class="empty-state">Loading saved surveys…</p>
+              </div>
+            </article>
           </section>
 
           <section class="page" id="household">
@@ -308,7 +352,7 @@
                 <h1>Household profile</h1>
                 <p>Location, address and household head information.</p>
               </div>
-              <span class="pill">● Draft record</span>
+              <span class="pill" id="recordStatus">● New record</span>
             </div>
             <div class="formcard glass">
               <div class="sectionhead">
@@ -319,15 +363,15 @@
                 </div>
               </div>
               <div class="fields">
-                <label>District *<select><option>Bengaluru Urban</option><option>Mysuru</option><option>Belagavi</option><option>Udupi</option><option>Kalaburagi</option></select></label>
-                <label>Taluk *<select><option>Bengaluru North</option><option>Bengaluru South</option><option>Yelahanka</option></select></label>
-                <label>Village / Town / City / Ward *<input value="Sample Nagar" /></label>
-                <label>Ward number<input placeholder="Enter ward number" /></label>
-                <label>Survey block number<input placeholder="Enter block number" /></label>
-                <label>House number *<input value="Demo-102" /></label>
-                <label class="wide">Street / Postal address *<input value="12 Sample Road, Sample Nagar" /></label>
-                <label>PIN code<input placeholder="6-digit PIN code" /></label>
-                <label>Ration card reference<input placeholder="Fictional reference only" /></label>
+                <label>District *<select data-field="district" required><option value="">Select district</option><option>Bengaluru Urban</option><option>Mysuru</option><option>Belagavi</option><option>Udupi</option><option>Kalaburagi</option></select></label>
+                <label>Taluk *<input data-field="taluk" required placeholder="Enter taluk" /></label>
+                <label>Village / Town / City / Ward *<input data-field="locality" required placeholder="Enter village, town, city or ward" /></label>
+                <label>Ward number<input data-field="wardNumber" placeholder="Enter ward number" /></label>
+                <label>Survey block number<input data-field="blockNumber" placeholder="Enter block number" /></label>
+                <label>House number *<input data-field="houseNumber" required placeholder="Enter house number" /></label>
+                <label class="wide">Street / Postal address *<input data-field="address" required placeholder="Enter street and postal address" /></label>
+                <label>PIN code<input data-field="pinCode" inputmode="numeric" pattern="[0-9]{6}" placeholder="6-digit PIN code" /></label>
+                <label>Ration card reference<input data-field="rationCardReference" placeholder="Optional; do not enter sensitive IDs" /></label>
               </div>
               <div class="sectionhead separated">
                 <span>02</span>
@@ -337,13 +381,13 @@
                 </div>
               </div>
               <div class="fields">
-                <label>Full name *<input value="Ravi Kumar (Sample)" /></label>
-                <label>Relationship<select><option>Self / Head of household</option><option>Spouse</option><option>Other</option></select></label>
-                <label>Mobile number<input placeholder="Demo number only" /></label>
-                <label>Preferred language<select><option>Kannada</option><option>English</option><option>Urdu</option><option>Other</option></select></label>
+                <label>Full name *<input data-field="headName" required placeholder="Enter head of household name" /></label>
+                <label>Relationship<select data-field="headRelationship"><option>Self / Head of household</option><option>Spouse</option><option>Other</option></select></label>
+                <label>Mobile number<input data-field="mobile" inputmode="tel" placeholder="Optional demo number" /></label>
+                <label>Preferred language<select data-field="language"><option>Kannada</option><option>English</option><option>Urdu</option><option>Other</option></select></label>
               </div>
               <div class="formfoot">
-                <small>Fields marked * are required in this design concept.</small>
+                <small>Required fields are marked *.</small>
                 <button class="primary" data-go="family">Continue to family tree →</button>
               </div>
             </div>
@@ -364,39 +408,20 @@
                   <div>
                     <small class="eyebrow">RELATIONSHIP MAP</small>
                     <h3>Household family tree</h3>
-                    <p>Illustrative relationship view · fictional members</p>
+                    <p>Members linked to this household</p>
                   </div>
                   <span class="pill" id="memberPill">4 members</span>
                 </div>
                 <div class="tree">
-                  <div class="person root">
-                    <div class="face blue">RK</div>
-                    <b>Ravi Kumar</b>
-                    <small>Head · 42 years</small>
+                  <div class="person root" id="familyHead">
+                    <div class="face blue">?</div>
+                    <b>Household head</b>
+                    <small>Enter household profile first</small>
                     <span class="tiny">HOUSEHOLD HEAD</span>
                   </div>
                   <div class="stem"></div>
                   <div class="branch"></div>
-                  <div class="children" id="treeChildren">
-                    <div class="person">
-                      <div class="face rose">SK</div>
-                      <b>Suma Kumar</b>
-                      <small>Spouse · 38 years</small>
-                      <span class="relation">Wife</span>
-                    </div>
-                    <div class="person">
-                      <div class="face mint">AK</div>
-                      <b>Arjun Kumar</b>
-                      <small>Son · 15 years</small>
-                      <span class="relation">Child</span>
-                    </div>
-                    <div class="person">
-                      <div class="face gold">PK</div>
-                      <b>Priya Kumar</b>
-                      <small>Daughter · 11 years</small>
-                      <span class="relation">Child</span>
-                    </div>
-                  </div>
+                  <div class="children" id="treeChildren"></div>
                 </div>
               </article>
 
@@ -408,12 +433,7 @@
                     <p>Select a member to view their profile.</p>
                   </div>
                 </div>
-                <div id="memberList">
-                  <button class="memberrow selected"><span class="face blue">RK</span><span><b>Ravi Kumar (Sample)</b><small>Head of household</small></span><span>›</span></button>
-                  <button class="memberrow"><span class="face rose">SK</span><span><b>Suma Kumar (Sample)</b><small>Wife</small></span><span>›</span></button>
-                  <button class="memberrow"><span class="face mint">AK</span><span><b>Arjun Kumar (Sample)</b><small>Son</small></span><span>›</span></button>
-                  <button class="memberrow"><span class="face gold">PK</span><span><b>Priya Kumar (Sample)</b><small>Daughter</small></span><span>›</span></button>
-                </div>
+                <div id="memberList"></div>
               </article>
             </div>
           </section>
@@ -425,30 +445,30 @@
                 <h1>Individual <em>member details.</em></h1>
                 <p>Personal, demographic, education and identity reference fields.</p>
               </div>
-              <span class="pill">Sample member · Ravi Kumar</span>
+              <span class="pill" id="selectedMemberLabel">No member selected</span>
             </div>
             <div class="privacy">
               <b>✧ Privacy reminder</b>
-              <p>Use fictional values in this UI demo. Aadhaar and identity information are sensitive; this prototype does not verify or submit identity details.</p>
+              <p>Do not store Aadhaar numbers or other highly sensitive identifiers. This is a demo project, not an official government service.</p>
             </div>
             <div class="formcard glass">
               <div class="sectionhead">
                 <span>03</span>
                 <div>
                   <h2>Personal information</h2>
-                  <p>Fields shown as a design concept; official requirements may differ.</p>
+                  <p>Fields are examples for this demo; official requirements may differ.</p>
                 </div>
               </div>
               <div class="fields">
-                <label>Full name *<input value="Ravi Kumar (Sample)" /></label>
-                <label>Relationship to head<select><option>Self / Head of household</option><option>Spouse</option><option>Son</option><option>Daughter</option><option>Father</option><option>Mother</option><option>Other relative</option></select></label>
-                <label>Date of birth<input type="date" value="1984-04-18" /></label>
-                <label>Age (years)<input type="number" value="42" min="0" max="120" /></label>
-                <label>Gender<select><option>Male</option><option>Female</option><option>Transgender / third gender</option><option>Prefer not to say</option></select></label>
-                <label>Marital status<select><option>Married</option><option>Unmarried</option><option>Widowed</option><option>Divorced / separated</option></select></label>
-                <label>Mother tongue<select><option>Kannada</option><option>Urdu</option><option>Telugu</option><option>Tamil</option><option>Marathi</option><option>Malayalam</option><option>Hindi</option><option>Other</option></select></label>
-                <label>Education level<select><option>SSLC</option><option>Not attended school</option><option>Primary</option><option>Secondary</option><option>PUC</option><option>Graduate</option><option>Postgraduate</option></select></label>
-                <label>Employment<select><option>Private employment</option><option>Government service</option><option>Self-employed</option><option>Agriculture</option><option>Student</option><option>Unemployed</option></select></label>
+                <label>Full name *<input data-field="name" required placeholder="Select a family member first" /></label>
+                <label>Relationship to head<select data-field="relationship"><option>Self / Head of household</option><option>Spouse</option><option>Son</option><option>Daughter</option><option>Father</option><option>Mother</option><option>Other relative</option></select></label>
+                <label>Date of birth<input data-field="dateOfBirth" type="date" /></label>
+                <label>Age (years)<input data-field="age" type="number" min="0" max="120" /></label>
+                <label>Gender<select data-field="gender"><option value="">Select gender</option><option>Male</option><option>Female</option><option>Transgender / third gender</option><option>Prefer not to say</option></select></label>
+                <label>Marital status<select data-field="maritalStatus"><option value="">Select status</option><option>Married</option><option>Unmarried</option><option>Widowed</option><option>Divorced / separated</option></select></label>
+                <label>Mother tongue<select data-field="motherTongue"><option value="">Select language</option><option>Kannada</option><option>Urdu</option><option>Telugu</option><option>Tamil</option><option>Marathi</option><option>Malayalam</option><option>Hindi</option><option>Other</option></select></label>
+                <label>Education level<select data-field="education"><option value="">Select education</option><option>Not attended school</option><option>Primary</option><option>Secondary</option><option>SSLC</option><option>PUC</option><option>Graduate</option><option>Postgraduate</option></select></label>
+                <label>Employment<select data-field="employment"><option value="">Select employment</option><option>Private employment</option><option>Government service</option><option>Self-employed</option><option>Agriculture</option><option>Student</option><option>Unemployed</option></select></label>
               </div>
               <div class="formfoot">
                 <button class="secondary" data-go="family">← Back</button>
@@ -474,12 +494,12 @@
                 </div>
               </div>
               <div class="fields">
-                <label>Own land?<select><option>No</option><option>Yes</option></select></label>
-                <label>Land type<select><option>Dry land</option><option>Wet / irrigated</option><option>Garden land</option><option>Plantation</option><option>Other</option></select></label>
-                <label>How acquired?<select><option>Ancestral</option><option>Purchased / sale deed</option><option>Gift / will</option><option>Government grant</option><option>Other</option><option>None</option></select></label>
-                <label>Area (acres)<input type="number" min="0" placeholder="0.00" /></label>
-                <label>Gunta / cents<input type="number" min="0" placeholder="0" /></label>
-                <label>Irrigation source<select><option>None / rain-fed</option><option>Borewell</option><option>Canal / river</option><option>Open well</option><option>Lift irrigation</option><option>Other</option></select></label>
+                <label>Own land?<select data-field="ownsLand"><option>No</option><option>Yes</option></select></label>
+                <label>Land type<select data-field="landType"><option value="">Select land type</option><option>Dry land</option><option>Wet / irrigated</option><option>Garden land</option><option>Plantation</option><option>Other</option></select></label>
+                <label>How acquired?<select data-field="acquisition"><option value="">Select acquisition</option><option>Ancestral</option><option>Purchased / sale deed</option><option>Gift / will</option><option>Government grant</option><option>Other</option><option>None</option></select></label>
+                <label>Area (acres)<input data-field="acres" type="number" min="0" step="0.01" placeholder="0.00" /></label>
+                <label>Gunta / cents<input data-field="gunta" type="number" min="0" step="0.01" placeholder="0" /></label>
+                <label>Irrigation source<select data-field="irrigation"><option value="">Select source</option><option>None / rain-fed</option><option>Borewell</option><option>Canal / river</option><option>Open well</option><option>Lift irrigation</option><option>Other</option></select></label>
               </div>
               <div class="sectionhead separated">
                 <span>05</span>
@@ -489,10 +509,10 @@
                 </div>
               </div>
               <div class="fields">
-                <label>Residence ownership<select><option>Owned</option><option>Rented</option><option>Family-owned</option><option>Government housing</option><option>Other</option></select></label>
-                <label>House structure<select><option>Permanent / pucca</option><option>Semi-permanent</option><option>Temporary / kutcha</option></select></label>
-                <label>Number of rooms<input type="number" min="0" placeholder="e.g. 3" /></label>
-                <label>Electricity connection<select><option>Yes</option><option>No</option><option>Not known</option></select></label>
+                <label>Residence ownership<select data-field="ownership"><option value="">Select ownership</option><option>Owned</option><option>Rented</option><option>Family-owned</option><option>Government housing</option><option>Other</option></select></label>
+                <label>House structure<select data-field="structure"><option value="">Select structure</option><option>Permanent / pucca</option><option>Semi-permanent</option><option>Temporary / kutcha</option></select></label>
+                <label>Number of rooms<input data-field="rooms" type="number" min="0" placeholder="e.g. 3" /></label>
+                <label>Electricity connection<select data-field="electricity"><option value="">Select answer</option><option>Yes</option><option>No</option><option>Not known</option></select></label>
               </div>
               <div class="formfoot">
                 <button class="secondary" data-go="member">← Back</button>
@@ -506,7 +526,7 @@
               <div>
                 <small class="eyebrow">FINAL STEP / REVIEW</small>
                 <h1>Review & <em>summary.</em></h1>
-                <p>A clear overview before a hypothetical submission.</p>
+                <p>Review the household information before saving it to your account.</p>
               </div>
               <span class="pill">✓ UI review</span>
             </div>
@@ -514,46 +534,45 @@
               <div class="check">✓</div>
               <div>
                 <h2>Everything in one place.</h2>
-                <p>This is a visual summary of the sample household record. Nothing is transmitted or submitted.</p>
+                <p>Saving stores this survey in your private Supabase account. It is not sent to a government service.</p>
               </div>
-              <b>100%<small>Sections previewed</small></b>
+              <b><span id="reviewMemberCount">0</span><small>Family members</small></b>
             </div>
             <div class="summaries">
               <article class="panel glass">
                 <small class="eyebrow">HOUSEHOLD</small>
-                <h3>KS · 02841</h3>
-                <p>Ravi Kumar (Sample)</p>
-                <div class="summaryline">District <b>Bengaluru Urban</b></div>
-                <div class="summaryline">Taluk <b>Bengaluru North</b></div>
-                <div class="summaryline">Address <b>Sample Nagar</b></div>
+                <h3 id="reviewHouseholdName">New household</h3>
+                <p id="reviewHeadName">No household head entered</p>
+                <div class="summaryline">District <b id="reviewDistrict">—</b></div>
+                <div class="summaryline">Taluk <b id="reviewTaluk">—</b></div>
+                <div class="summaryline">Address <b id="reviewAddress">—</b></div>
                 <button class="textlink" data-go="household">Edit household ↗</button>
               </article>
               <article class="panel glass">
                 <small class="eyebrow">FAMILY</small>
-                <h3 id="summaryCount">4 members</h3>
+                <h3 id="summaryCount">0 members</h3>
                 <p>Family tree entries</p>
-                <div class="summaryline">Adults <b>2 (sample)</b></div>
-                <div class="summaryline">Children <b>2 (sample)</b></div>
-                <div class="summaryline">Relationships <b>Linked in demo</b></div>
+                <div class="summaryline">Household members <b id="summaryMembers">0</b></div>
+                <div class="summaryline">Relationships <b>Recorded</b></div>
                 <button class="textlink" data-go="family">Edit family tree ↗</button>
               </article>
               <article class="panel glass">
                 <small class="eyebrow">LAND & ASSETS</small>
-                <h3>Household property</h3>
-                <p>Example property details</p>
+                <h3>Land & amenities</h3>
+                <p>Household asset details</p>
                 <div class="summaryline">Land ownership <b id="landSummary">No</b></div>
-                <div class="summaryline">Residence <b>Owned house</b></div>
-                <div class="summaryline">Asset list <b>Demo only</b></div>
+                <div class="summaryline">Residence <b id="reviewResidence">—</b></div>
+                <div class="summaryline">Electricity <b id="reviewElectricity">—</b></div>
                 <button class="textlink" data-go="assets">Edit assets ↗</button>
               </article>
             </div>
             <div class="privacy">
-              <b>✦ Design prototype — not an official service</b>
-              <p>This preview uses fictional information. It is not connected to Karnataka Government systems and does not validate or store Aadhaar details.</p>
+              <b>✦ Demo — not an official government service</b>
+              <p>Do not enter real Aadhaar numbers or other highly sensitive data.</p>
             </div>
             <div class="formfoot">
               <button class="secondary" data-go="assets">← Back to assets</button>
-              <button class="primary" id="finish">Finish demo</button>
+              <button class="primary" id="finish">Save survey</button>
             </div>
           </section>
         </main>
@@ -570,7 +589,7 @@
         </div>
         <label>
           Member name
-          <input id="newName" type="text" placeholder="Enter fictional member name" />
+          <input id="newName" type="text" placeholder="Enter member name" required />
         </label>
         <label>
           Relationship
@@ -594,6 +613,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
