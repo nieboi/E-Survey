@@ -12,6 +12,14 @@ A household-survey demo with Supabase email/password authentication and cloud-sa
 6. Start the app with `npm start`, then open `http://127.0.0.1:3000`.
 7. Create an account with an email address you can access. If email confirmation is enabled, confirm the email before signing in.
 
+## Deploy to Vercel
+
+1. Import this repository into Vercel with the project root as the **Root Directory**. The app is static, and `api/config.js` provides the `/api/config` serverless function; no build command is required.
+2. In the Vercel project's **Settings → Environment Variables**, add `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` using the values from your Supabase project. Add them for the environments you deploy, then redeploy so the function can read them.
+3. In Supabase **Authentication → URL Configuration**, set the **Site URL** to your deployed site and add its URL (and any preview URLs you use) to the allowed redirect URLs.
+
+Use only a Supabase publishable key or legacy `anon` key. Never add a service-role or secret key to Vercel.
+
 On Windows PowerShell, copy the environment template with:
 
 ```powershell

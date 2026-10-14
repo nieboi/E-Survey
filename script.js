@@ -108,7 +108,7 @@
     const configHelp = document.getElementById('authConfigHelp');
     try {
       const response = await fetch('/api/config', { cache: 'no-store' });
-      if (!response.ok) throw new Error(`Local configuration request failed (${response.status}).`);
+      if (!response.ok) throw new Error(`Supabase configuration request failed (${response.status}).`);
       const config = await response.json();
       if (!config.configured) {
         configMessage.textContent = 'Supabase settings are not configured yet.';

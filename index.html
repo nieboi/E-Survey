@@ -147,6 +147,70 @@
         </div>
       </section>
 
+      <section class="auth-gate panel glass" id="authGate" aria-labelledby="authTitle">
+        <div class="auth-welcome">
+          <small class="eyebrow">A PEOPLE-FIRST SURVEY WORKSPACE</small>
+          <h2>Better information. <span>Better planning.</span></h2>
+          <p>Sign in to continue to your private household survey workspace.</p>
+          <ul class="welcome-points">
+            <li>Start a household survey and record family details.</li>
+            <li>Review and update saved survey records anytime.</li>
+            <li>Your account sees only its own private survey data.</li>
+          </ul>
+          <p class="demo-notice">Janaseva eSurvey is a demo project, not an official government service.</p>
+        </div>
+
+        <div class="auth-card">
+          <div class="auth-heading">
+            <small class="eyebrow">SECURE ACCOUNT ACCESS</small>
+            <h2 id="authTitle">Sign in to continue</h2>
+            <p id="authDescription">Your surveys are private to your account and sync through Supabase.</p>
+          </div>
+          <div class="auth-config-message" id="authConfigMessage" role="status">
+            Checking the Supabase connection…
+          </div>
+          <form class="auth-form" id="authForm" hidden>
+            <label>Email address
+              <input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com" />
+            </label>
+            <label>Password
+              <input id="authPassword" type="password" autocomplete="current-password" required placeholder="Your password" />
+            </label>
+            <label id="confirmPasswordLabel" hidden>Confirm password
+              <input id="authPasswordConfirm" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" />
+            </label>
+            <div class="auth-actions">
+              <button class="primary" id="authSubmit" type="submit">Sign in</button>
+              <button class="textlink" id="authModeToggle" type="button">Create an account</button>
+              <button class="textlink" id="resetPassword" type="button">Forgot password?</button>
+            </div>
+            <p class="auth-feedback" id="authFeedback" aria-live="polite"></p>
+          </form>
+          <form class="auth-form" id="recoveryForm" hidden>
+            <label>New password
+              <input id="recoveryPassword" type="password" autocomplete="new-password" minlength="8" required />
+            </label>
+            <label>Confirm new password
+              <input id="recoveryPasswordConfirm" type="password" autocomplete="new-password" minlength="8" required />
+            </label>
+            <div class="auth-actions">
+              <button class="primary" type="submit">Update password</button>
+              <button class="textlink" id="cancelRecovery" type="button">Back to sign in</button>
+            </div>
+            <p class="auth-feedback" id="recoveryFeedback" aria-live="polite"></p>
+          </form>
+          <div class="auth-config-help" id="authConfigHelp" hidden>
+            <strong>Finish Supabase setup</strong>
+            <ol>
+              <li>Create a Supabase project and run <code>supabase/schema.sql</code> in its SQL Editor.</li>
+              <li>For Vercel, add <code>SUPABASE_URL</code> and <code>SUPABASE_PUBLISHABLE_KEY</code> in project environment variables, then redeploy. Locally, put them in <code>.env</code> and restart the app.</li>
+              <li>Add this site's URL to Supabase Auth's allowed redirect URLs, then create your account here.</li>
+            </ol>
+            <p>Never put a service-role or secret key in this app.</p>
+          </div>
+        </div>
+      </section>
+
       <section class="app-overview">
         <div class="section-label">Platform preview</div>
         <div class="overview-head">
@@ -206,56 +270,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section class="auth-gate panel glass" id="authGate" aria-labelledby="authTitle">
-        <div class="auth-heading">
-          <small class="eyebrow">PRIVATE SURVEY WORKSPACE</small>
-          <h2 id="authTitle">Sign in to continue</h2>
-          <p id="authDescription">Your surveys are private to your account and sync through Supabase.</p>
-        </div>
-        <div class="auth-config-message" id="authConfigMessage" role="status">
-          Checking the Supabase connection…
-        </div>
-        <form class="auth-form" id="authForm" hidden>
-          <label>Email address
-            <input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com" />
-          </label>
-          <label>Password
-            <input id="authPassword" type="password" autocomplete="current-password" required placeholder="Your password" />
-          </label>
-          <label id="confirmPasswordLabel" hidden>Confirm password
-            <input id="authPasswordConfirm" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" />
-          </label>
-          <div class="auth-actions">
-            <button class="primary" id="authSubmit" type="submit">Sign in</button>
-            <button class="textlink" id="authModeToggle" type="button">Create an account</button>
-            <button class="textlink" id="resetPassword" type="button">Forgot password?</button>
-          </div>
-          <p class="auth-feedback" id="authFeedback" aria-live="polite"></p>
-        </form>
-        <form class="auth-form" id="recoveryForm" hidden>
-          <label>New password
-            <input id="recoveryPassword" type="password" autocomplete="new-password" minlength="8" required />
-          </label>
-          <label>Confirm new password
-            <input id="recoveryPasswordConfirm" type="password" autocomplete="new-password" minlength="8" required />
-          </label>
-          <div class="auth-actions">
-            <button class="primary" type="submit">Update password</button>
-            <button class="textlink" id="cancelRecovery" type="button">Back to sign in</button>
-          </div>
-          <p class="auth-feedback" id="recoveryFeedback" aria-live="polite"></p>
-        </form>
-        <div class="auth-config-help" id="authConfigHelp" hidden>
-          <strong>Finish Supabase setup</strong>
-          <ol>
-            <li>Create a Supabase project and run <code>supabase/schema.sql</code> in its SQL Editor.</li>
-            <li>Copy <code>.env.example</code> to <code>.env</code> and add your project URL and publishable/anon key.</li>
-            <li>Restart the app with <code>npm start</code>, then create your sign-in account here.</li>
-          </ol>
-          <p>Never put a service-role or secret key in this app.</p>
         </div>
       </section>
 
