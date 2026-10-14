@@ -8,6 +8,7 @@
   const memberPill = document.getElementById('memberPill');
   const recordStatus = document.getElementById('recordStatus');
   const finish = document.getElementById('finish');
+  const landing = document.getElementById('landing');
   const authGate = document.getElementById('authGate');
   const authForm = document.getElementById('authForm');
   const authFeedback = document.getElementById('authFeedback');
@@ -38,6 +39,9 @@
     passwordRecoveryMode = true;
     currentUser = session?.user || currentUser;
     authGate.hidden = false;
+    landing.hidden = false;
+    document.getElementById('landingNav').hidden = false;
+    document.getElementById('workspaceTag').hidden = false;
     document.getElementById('app').hidden = true;
     document.getElementById('accountBar').hidden = true;
     document.getElementById('authConfigMessage').hidden = true;
@@ -92,7 +96,9 @@
     const nextUser = session?.user || null;
     if (!force && currentUser?.id === nextUser?.id) return;
     currentUser = nextUser;
-    authGate.hidden = Boolean(currentUser);
+    landing.hidden = Boolean(currentUser);
+    document.getElementById('landingNav').hidden = Boolean(currentUser);
+    document.getElementById('workspaceTag').hidden = Boolean(currentUser);
     document.getElementById('app').hidden = !currentUser;
     const accountBar = document.getElementById('accountBar');
     accountBar.hidden = !currentUser;
@@ -475,9 +481,6 @@
     document.getElementById('surveyCount').textContent = String(count);
     document.getElementById('reviewedCount').textContent = String(count);
     document.getElementById('memberCount').textContent = String(people);
-    document.getElementById('showcaseSurveys').textContent = String(count);
-    document.getElementById('showcaseHouseholds').textContent = String(count);
-    document.getElementById('showcaseFamilies').textContent = String(people);
   }
 
   async function loadSurveys() {

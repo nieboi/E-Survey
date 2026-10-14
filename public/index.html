@@ -26,15 +26,13 @@
         </div>
       </div>
 
-      <nav class="topnav" aria-label="Main navigation">
+      <nav class="topnav" id="landingNav" aria-label="Welcome page navigation">
         <a href="#home">Home</a>
-        <a href="#authGate" data-workspace-link>App</a>
         <a href="#features">Features</a>
-        <a href="#authGate" data-workspace-link>Survey app</a>
       </nav>
 
       <div class="topright">
-        <span class="tag">PRIVATE SURVEY WORKSPACE</span>
+        <span class="tag" id="workspaceTag">PRIVATE SURVEY WORKSPACE</span>
         <div class="account-bar" id="accountBar" hidden>
           <span class="account-email" id="accountEmail"></span>
           <button class="secondary" id="signOut" type="button">Sign out</button>
@@ -43,235 +41,119 @@
     </header>
 
     <main class="page-shell">
-      <section class="hero" id="home">
-        <div class="hero-copy">
-          <span class="eyebrow">KARNATAKA HOUSEHOLD SURVEY DEMO</span>
-          <h1>
-            Citizen-first surveys with a
-            <span>stronger Karnataka identity.</span>
-          </h1>
-          <p>
-            Securely enter household, family, and asset information, then access your saved surveys after signing in.
-          </p>
-
-          <div class="cta-row">
-            <button class="primary" type="button" data-go="dashboard">Open survey app</button>
-            <button class="ghost" type="button" data-go="household">New survey</button>
+      <div class="landing" id="landing">
+        <section class="hero login-hero" id="home">
+          <div class="hero-copy">
+            <span class="eyebrow">KARNATAKA HOUSEHOLD SURVEY DEMO</span>
+            <h1>
+              Every household deserves
+              <span>to be counted.</span>
+            </h1>
+            <p>
+              A thoughtful, private workspace to record household needs and build a clearer picture for better planning.
+            </p>
+            <div class="welcome-benefits">
+              <div><span>01</span><strong>Household profile</strong><small>Capture location and basic details.</small></div>
+              <div><span>02</span><strong>Family information</strong><small>Record member details and relationships.</small></div>
+              <div><span>03</span><strong>Review securely</strong><small>Save records privately to your account.</small></div>
+            </div>
+            <p class="demo-notice">A community survey demo — not an official government service.</p>
           </div>
 
-          <div class="hero-stats">
-            <div>
-              <strong>Private</strong>
-              <span>sign-in protected</span>
+          <section class="auth-card login-card" id="authGate" aria-labelledby="authTitle">
+            <div class="auth-heading">
+              <span class="login-lock" aria-hidden="true">✓</span>
+              <small class="eyebrow">YOUR PRIVATE WORKSPACE</small>
+              <h2 id="authTitle">Sign in to continue</h2>
+              <p id="authDescription">Sign in securely to manage your household surveys.</p>
             </div>
-            <div>
-              <strong>Save</strong>
-              <span>edit &amp; reopen records</span>
+            <div class="auth-config-message" id="authConfigMessage" role="status">
+              Checking the Supabase connection…
             </div>
-            <div>
-              <strong>Cloud</strong>
-              <span>available on your devices</span>
+            <form class="auth-form" id="authForm">
+              <label>Email address
+                <input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com" disabled />
+              </label>
+              <label>Password
+                <input id="authPassword" type="password" autocomplete="current-password" required placeholder="Your password" disabled />
+              </label>
+              <label id="confirmPasswordLabel" hidden>Confirm password
+                <input id="authPasswordConfirm" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" disabled />
+              </label>
+              <div class="auth-actions">
+                <button class="primary" id="authSubmit" type="submit" disabled>Sign in</button>
+                <button class="textlink" id="authModeToggle" type="button" disabled>Create an account</button>
+                <button class="textlink" id="resetPassword" type="button" disabled>Forgot password?</button>
+              </div>
+              <p class="auth-feedback" id="authFeedback" aria-live="polite"></p>
+            </form>
+            <form class="auth-form" id="recoveryForm" hidden>
+              <label>New password
+                <input id="recoveryPassword" type="password" autocomplete="new-password" minlength="8" required />
+              </label>
+              <label>Confirm new password
+                <input id="recoveryPasswordConfirm" type="password" autocomplete="new-password" minlength="8" required />
+              </label>
+              <div class="auth-actions">
+                <button class="primary" type="submit">Update password</button>
+                <button class="textlink" id="cancelRecovery" type="button">Back to sign in</button>
+              </div>
+              <p class="auth-feedback" id="recoveryFeedback" aria-live="polite"></p>
+            </form>
+            <div class="auth-config-help" id="authConfigHelp" hidden>
+              <strong>Finish Supabase setup</strong>
+              <ol>
+                <li>Create a Supabase project and run <code>supabase/schema.sql</code> in its SQL Editor.</li>
+                <li>For Vercel, verify the project URL and a publishable/anon key in Environment Variables, then redeploy. Locally, put <code>SUPABASE_URL</code> and <code>SUPABASE_PUBLISHABLE_KEY</code> in <code>.env</code> and restart.</li>
+                <li>Add this site's URL to Supabase Auth's allowed redirect URLs, then create your account here.</li>
+              </ol>
+              <p>Never put a service-role or secret key in this app.</p>
             </div>
-          </div>
-        </div>
+          </section>
+        </section>
 
-        <div class="hero-visual leadership-stack">
-          <div class="leader-tile leader-one">
+        <section class="photo-banner login-gallery" aria-label="India and Karnataka public service imagery">
+          <figure class="banner-card">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Narendra_Modi%2C_May_2019.jpg"
-              alt="Narendra Modi portrait"
+              alt="Portrait of India's Prime Minister"
               loading="lazy"
             />
-            <div class="leader-meta">
-              <span class="mini-tag">National</span>
-              <strong>Shri. Narendra Modi</strong>
-              <small>Prime Minister of India</small>
+            <figcaption class="banner-caption">
+              <small>India</small>
+              <strong>Serving every community</strong>
               <a class="photo-credit" href="https://commons.wikimedia.org/wiki/File:Narendra_Modi,_May_2019.jpg" target="_blank" rel="noreferrer">Photo: Prime Minister's Office · GODL-India</a>
-            </div>
-          </div>
-          <div class="leader-tile leader-two">
+            </figcaption>
+          </figure>
+          <figure class="banner-card">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Siddaramaiah.jpg"
-              alt="Siddaramaiah portrait"
+              src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Bangalore_Vidhana_Soudha_India_Vikasa_Soudha_%2848186335601%29.jpg"
+              alt="Vidhana Soudha, seat of the Karnataka Legislature"
               loading="lazy"
             />
-            <div class="leader-meta">
-              <span class="mini-tag">Karnataka</span>
-              <strong>Shri Siddaramaiah</strong>
-              <small>Chief Minister of Karnataka</small>
-              <a class="photo-credit" href="https://commons.wikimedia.org/wiki/File:Siddaramaiah.jpg" target="_blank" rel="noreferrer">Photo: Muhammad Mahdi Karim · GFDL 1.2</a>
-            </div>
+            <figcaption class="banner-caption">
+              <small>Karnataka</small>
+              <strong>Public service, rooted locally</strong>
+              <a class="photo-credit" href="https://commons.wikimedia.org/wiki/File:Bangalore_Vidhana_Soudha_India_Vikasa_Soudha_(48186335601).jpg" target="_blank" rel="noreferrer">Photo: Abhiman Singh · CC0</a>
+            </figcaption>
+          </figure>
+        </section>
+
+        <section class="status-row landing-values" id="features" aria-label="Workspace features">
+          <div class="status-card strong">
+            <span class="status-label">Private by account</span>
+            <strong>Your surveys stay in your workspace</strong>
           </div>
-        </div>
-      </section>
-
-      <section class="status-row" id="features">
-        <div class="status-card strong">
-          <span class="status-label">Private access</span>
-          <strong>Sign in to view your records</strong>
-        </div>
-        <div class="status-card">
-          <span class="status-label">Survey workflow</span>
-          <strong>Household · family · assets</strong>
-        </div>
-        <div class="status-card">
-          <span class="status-label">Project status</span>
-          <strong>Demo project · not an official service</strong>
-        </div>
-      </section>
-
-      <section class="photo-banner" aria-label="Karnataka service banner collage">
-        <div class="banner-card banner-card-large">
-          <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
-            alt="Karnataka citizens in a public service gathering"
-          />
-          <div class="banner-caption">
-            <small>Service network</small>
-            <strong>Public-first survey delivery</strong>
+          <div class="status-card">
+            <span class="status-label">Simple workflow</span>
+            <strong>Household · family · assets</strong>
           </div>
-        </div>
-
-        <div class="banner-card">
-          <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80"
-            alt="Urban infrastructure and offices"
-          />
-        </div>
-
-        <div class="banner-card">
-          <img
-            src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
-            alt="Community engagement and citizens"
-          />
-        </div>
-      </section>
-
-      <section class="auth-gate panel glass" id="authGate" aria-labelledby="authTitle">
-        <div class="auth-welcome">
-          <small class="eyebrow">A PEOPLE-FIRST SURVEY WORKSPACE</small>
-          <h2>Better information. <span>Better planning.</span></h2>
-          <p>Sign in to continue to your private household survey workspace.</p>
-          <ul class="welcome-points">
-            <li>Start a household survey and record family details.</li>
-            <li>Review and update saved survey records anytime.</li>
-            <li>Your account sees only its own private survey data.</li>
-          </ul>
-          <p class="demo-notice">Janaseva eSurvey is a demo project, not an official government service.</p>
-        </div>
-
-        <div class="auth-card">
-          <div class="auth-heading">
-            <small class="eyebrow">SECURE ACCOUNT ACCESS</small>
-            <h2 id="authTitle">Sign in to continue</h2>
-            <p id="authDescription">Your surveys are private to your account and sync through Supabase.</p>
+          <div class="status-card">
+            <span class="status-label">Built for clarity</span>
+            <strong>Review before saving</strong>
           </div>
-          <div class="auth-config-message" id="authConfigMessage" role="status">
-            Checking the Supabase connection…
-          </div>
-          <form class="auth-form" id="authForm">
-            <label>Email address
-              <input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com" disabled />
-            </label>
-            <label>Password
-              <input id="authPassword" type="password" autocomplete="current-password" required placeholder="Your password" disabled />
-            </label>
-            <label id="confirmPasswordLabel" hidden>Confirm password
-              <input id="authPasswordConfirm" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" disabled />
-            </label>
-            <div class="auth-actions">
-              <button class="primary" id="authSubmit" type="submit" disabled>Sign in</button>
-              <button class="textlink" id="authModeToggle" type="button" disabled>Create an account</button>
-              <button class="textlink" id="resetPassword" type="button" disabled>Forgot password?</button>
-            </div>
-            <p class="auth-feedback" id="authFeedback" aria-live="polite"></p>
-          </form>
-          <form class="auth-form" id="recoveryForm" hidden>
-            <label>New password
-              <input id="recoveryPassword" type="password" autocomplete="new-password" minlength="8" required />
-            </label>
-            <label>Confirm new password
-              <input id="recoveryPasswordConfirm" type="password" autocomplete="new-password" minlength="8" required />
-            </label>
-            <div class="auth-actions">
-              <button class="primary" type="submit">Update password</button>
-              <button class="textlink" id="cancelRecovery" type="button">Back to sign in</button>
-            </div>
-            <p class="auth-feedback" id="recoveryFeedback" aria-live="polite"></p>
-          </form>
-          <div class="auth-config-help" id="authConfigHelp" hidden>
-            <strong>Finish Supabase setup</strong>
-            <ol>
-              <li>Create a Supabase project and run <code>supabase/schema.sql</code> in its SQL Editor.</li>
-              <li>For Vercel, verify the project URL and a publishable/anon key in Environment Variables, then redeploy. Locally, put <code>SUPABASE_URL</code> and <code>SUPABASE_PUBLISHABLE_KEY</code> in <code>.env</code> and restart.</li>
-              <li>Add this site's URL to Supabase Auth's allowed redirect URLs, then create your account here.</li>
-            </ol>
-            <p>Never put a service-role or secret key in this app.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="app-overview">
-        <div class="section-label">Platform preview</div>
-        <div class="overview-head">
-          <div>
-            <h2>Built for clarity, trust and quick action.</h2>
-          </div>
-          <div class="flag-chip">
-            <span class="flag-saffron"></span>
-            <span class="flag-white"></span>
-            <span class="flag-green"></span>
-          </div>
-        </div>
-
-        <div class="app-showcase card-shadow">
-          <div class="window-bar">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-            <span class="window-title">Janaseva eSurvey</span>
-          </div>
-
-          <div class="window-body">
-            <aside class="mini-sidebar">
-              <div class="mini-item active">Overview</div>
-              <div class="mini-item">Household</div>
-              <div class="mini-item">Family</div>
-              <div class="mini-item">Assets</div>
-              <div class="mini-item">Summary</div>
-            </aside>
-
-            <div class="mini-main">
-              <div class="mini-top">
-                <div>
-                  <small>Household survey</small>
-                  <h3>Private dashboard</h3>
-                </div>
-                <span class="mini-private">Private</span>
-              </div>
-
-              <div class="mini-grid">
-                <div class="mini-card large">
-                  <span>Survey records</span>
-                  <strong id="showcaseSurveys">0</strong>
-                </div>
-                <div class="mini-card">
-                  <span>Households</span>
-                  <strong id="showcaseHouseholds">0</strong>
-                </div>
-                <div class="mini-card">
-                  <span>Families</span>
-                  <strong id="showcaseFamilies">0</strong>
-                </div>
-                <div class="mini-card wide">
-                  <span>Storage</span>
-                  <strong>Supabase cloud</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <section class="layout app-layout" id="app" hidden>
         <aside class="side glass">
