@@ -1,0 +1,12 @@
+{
+  "name": "janaseva-esurvey",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A household survey demo with Supabase authentication and private cloud storage.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
