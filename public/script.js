@@ -548,7 +548,10 @@
       }
     } catch (error) {
       console.error('Authentication failed:', error);
-      setAuthFeedback(error.message || 'Authentication failed. Check your details and try again.', true);
+      const message = /email rate limit exceeded/i.test(error.message || '')
+        ? 'Supabase temporarily limited confirmation emails. Wait before retrying, check Authentication → Users for an existing account, or configure custom SMTP in Authentication → SMTP Settings.'
+        : error.message || 'Authentication failed. Check your details and try again.';
+      setAuthFeedback(message, true);
     } finally {
       authSubmit.disabled = false;
     }
