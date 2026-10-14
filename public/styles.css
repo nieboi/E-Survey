@@ -571,7 +571,9 @@ img {
   font-family: 'Manrope', sans-serif;
 }
 
-.mini-top button {
+.mini-private {
+  display: inline-flex;
+  align-items: center;
   border-radius: 10px;
   background: rgba(19,136,8,0.12);
   color: var(--green);
@@ -1411,6 +1413,13 @@ input:focus, select:focus {
   padding-top: 14px;
   border-top: 1px solid var(--line);
   font-size: 0.83rem;
+}
+
+.privacy-note {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
 }
 
 .auth-card {

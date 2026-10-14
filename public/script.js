@@ -21,6 +21,7 @@
   let selectedMemberId = 'head';
   let currentUser = null;
   let supabase = null;
+  let savingSurvey = false;
   let signUpMode = false;
   let passwordRecoveryMode = false;
   let survey = createEmptySurvey();
@@ -407,6 +408,7 @@
   }
 
   async function saveSurvey() {
+    if (savingSurvey) return;
     if (!validateHousehold()) return;
     if (!currentUser) {
       notify('Sign in before saving surveys.');
@@ -414,6 +416,8 @@
       return;
     }
     captureForms();
+    savingSurvey = true;
+    finish.disabled = true;
     try {
       const query = supabase.from('surveys');
       const { data: result, error } = editingId
@@ -428,6 +432,9 @@
     } catch (error) {
       console.error('Saving survey failed:', error);
       notify(error.message);
+    } finally {
+      savingSurvey = false;
+      finish.disabled = false;
     }
   }
 
@@ -592,6 +599,12 @@
       go(button.dataset.go);
     });
   });
+  document.querySelectorAll('[data-workspace-link]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      go(currentUser ? 'dashboard' : 'authGate');
+    });
+  });
 
   document.getElementById('addMember').addEventListener('click', () => {
     captureForms();
@@ -629,18 +642,22 @@
   finish.addEventListener('click', saveSurvey);
 
   document.querySelectorAll('#household [data-field]').forEach((field) => {
-    field.addEventListener('input', () => {
+    const updateHousehold = () => {
       survey.household = readFieldValues('household');
       const head = survey.members.find((member) => member.id === 'head');
       if (head) head.name = survey.household.headName || '';
       renderFamily();
-    });
+    };
+    field.addEventListener('input', updateHousehold);
+    field.addEventListener('change', updateHousehold);
   });
   document.querySelectorAll('#member [data-field]').forEach((field) => {
-    field.addEventListener('input', () => {
+    const updateMember = () => {
       captureSelectedMember();
       renderFamily();
-    });
+    };
+    field.addEventListener('input', updateMember);
+    field.addEventListener('change', updateMember);
   });
 
   loadSelectedMember();

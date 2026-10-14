@@ -28,9 +28,9 @@
 
       <nav class="topnav" aria-label="Main navigation">
         <a href="#home">Home</a>
-        <a href="#app">App</a>
+        <a href="#authGate" data-workspace-link>App</a>
         <a href="#features">Features</a>
-        <a href="#app">Survey app</a>
+        <a href="#authGate" data-workspace-link>Survey app</a>
       </nav>
 
       <div class="topright">
@@ -55,8 +55,8 @@
           </p>
 
           <div class="cta-row">
-            <button class="primary" data-go="dashboard">Open survey app</button>
-            <button class="ghost" data-go="household">New survey</button>
+            <button class="primary" type="button" data-go="dashboard">Open survey app</button>
+            <button class="ghost" type="button" data-go="household">New survey</button>
           </div>
 
           <div class="hero-stats">
@@ -247,7 +247,7 @@
                   <small>Household survey</small>
                   <h3>Private dashboard</h3>
                 </div>
-                <button>Private</button>
+                <span class="mini-private">Private</span>
               </div>
 
               <div class="mini-grid">
@@ -276,13 +276,13 @@
       <section class="layout app-layout" id="app" hidden>
         <aside class="side glass">
           <div class="cap">SURVEY WORKSPACE</div>
-          <button class="nav new-survey" data-page="household"><span>New survey</span></button>
-          <button class="nav active" data-page="dashboard">⌂ <span>Overview</span></button>
-          <button class="nav" data-page="household">▦ <span>Household profile</span></button>
-          <button class="nav" data-page="family">♧ <span>Family tree</span></button>
-          <button class="nav" data-page="member">▣ <span>Member details</span></button>
-          <button class="nav" data-page="assets">⌂ <span>Land & assets</span></button>
-          <button class="nav" data-page="review">✓ <span>Review & summary</span></button>
+          <button class="nav new-survey" type="button" data-page="household"><span>New survey</span></button>
+          <button class="nav active" type="button" data-page="dashboard">⌂ <span>Overview</span></button>
+          <button class="nav" type="button" data-page="household">▦ <span>Household profile</span></button>
+          <button class="nav" type="button" data-page="family">♧ <span>Family tree</span></button>
+          <button class="nav" type="button" data-page="member">▣ <span>Member details</span></button>
+          <button class="nav" type="button" data-page="assets">⌂ <span>Land & assets</span></button>
+          <button class="nav" type="button" data-page="review">✓ <span>Review & summary</span></button>
 
           <div class="sidebottom">
             <div class="shield">✦</div>
@@ -300,7 +300,7 @@
                 <h1>Household survey <em>workspace.</em></h1>
                 <p>Create and manage your household surveys across your signed-in devices.</p>
               </div>
-              <button class="primary" data-go="household">＋ New survey ↗</button>
+              <button class="primary" type="button" data-go="household">＋ New survey ↗</button>
             </div>
 
             <div class="banner glass">
@@ -351,7 +351,7 @@
                   <h3>Saved household surveys</h3>
                   <p>Reopen, update or remove surveys saved to your account.</p>
                 </div>
-                <button class="secondary" id="refreshSurveys">Refresh list</button>
+                <button class="secondary" type="button" id="refreshSurveys">Refresh list</button>
               </div>
               <div id="surveyList" class="survey-list" aria-live="polite">
                 <p class="empty-state">Loading saved surveys…</p>
@@ -385,7 +385,6 @@
                 <label>House number *<input data-field="houseNumber" required placeholder="Enter house number" /></label>
                 <label class="wide">Street / Postal address *<input data-field="address" required placeholder="Enter street and postal address" /></label>
                 <label>PIN code<input data-field="pinCode" inputmode="numeric" pattern="[0-9]{6}" placeholder="6-digit PIN code" /></label>
-                <label>Ration card reference<input data-field="rationCardReference" placeholder="Optional; do not enter sensitive IDs" /></label>
               </div>
               <div class="sectionhead separated">
                 <span>02</span>
@@ -402,7 +401,7 @@
               </div>
               <div class="formfoot">
                 <small>Required fields are marked *.</small>
-                <button class="primary" data-go="family">Continue to family tree →</button>
+                <button class="primary" type="button" data-go="family">Continue to family tree →</button>
               </div>
             </div>
           </section>
@@ -414,7 +413,7 @@
                 <h1>Family tree <em>& members.</em></h1>
                 <p>Visualize household relationships and add individual family details.</p>
               </div>
-              <button class="primary" id="addMember">＋ Add family member</button>
+              <button class="primary" type="button" id="addMember">＋ Add family member</button>
             </div>
             <div class="familygrid">
               <article class="panel glass">
@@ -483,10 +482,20 @@
                 <label>Mother tongue<select data-field="motherTongue"><option value="">Select language</option><option>Kannada</option><option>Urdu</option><option>Telugu</option><option>Tamil</option><option>Marathi</option><option>Malayalam</option><option>Hindi</option><option>Other</option></select></label>
                 <label>Education level<select data-field="education"><option value="">Select education</option><option>Not attended school</option><option>Primary</option><option>Secondary</option><option>SSLC</option><option>PUC</option><option>Graduate</option><option>Postgraduate</option></select></label>
                 <label>Employment<select data-field="employment"><option value="">Select employment</option><option>Private employment</option><option>Government service</option><option>Self-employed</option><option>Agriculture</option><option>Student</option><option>Unemployed</option></select></label>
+                <label>Identity document viewed (optional)
+                  <select data-field="documentTypeViewed">
+                    <option value="">Not checked</option>
+                    <option>Aadhaar card</option>
+                    <option>Voter ID</option>
+                    <option>Ration card</option>
+                    <option>Other document</option>
+                  </select>
+                </label>
               </div>
+              <p class="privacy-note">Record only the document type viewed. Do not enter document numbers or upload/copy document images.</p>
               <div class="formfoot">
-                <button class="secondary" data-go="family">← Back</button>
-                <button class="primary" data-go="assets">Continue to assets →</button>
+                <button class="secondary" type="button" data-go="family">← Back</button>
+                <button class="primary" type="button" data-go="assets">Continue to assets →</button>
               </div>
             </div>
           </section>
@@ -529,8 +538,8 @@
                 <label>Electricity connection<select data-field="electricity"><option value="">Select answer</option><option>Yes</option><option>No</option><option>Not known</option></select></label>
               </div>
               <div class="formfoot">
-                <button class="secondary" data-go="member">← Back</button>
-                <button class="primary" data-go="review">Continue to review →</button>
+                <button class="secondary" type="button" data-go="member">← Back</button>
+                <button class="primary" type="button" data-go="review">Continue to review →</button>
               </div>
             </div>
           </section>
@@ -560,7 +569,7 @@
                 <div class="summaryline">District <b id="reviewDistrict">—</b></div>
                 <div class="summaryline">Taluk <b id="reviewTaluk">—</b></div>
                 <div class="summaryline">Address <b id="reviewAddress">—</b></div>
-                <button class="textlink" data-go="household">Edit household ↗</button>
+                <button class="textlink" type="button" data-go="household">Edit household ↗</button>
               </article>
               <article class="panel glass">
                 <small class="eyebrow">FAMILY</small>
@@ -568,7 +577,7 @@
                 <p>Family tree entries</p>
                 <div class="summaryline">Household members <b id="summaryMembers">0</b></div>
                 <div class="summaryline">Relationships <b>Recorded</b></div>
-                <button class="textlink" data-go="family">Edit family tree ↗</button>
+                <button class="textlink" type="button" data-go="family">Edit family tree ↗</button>
               </article>
               <article class="panel glass">
                 <small class="eyebrow">LAND & ASSETS</small>
@@ -577,7 +586,7 @@
                 <div class="summaryline">Land ownership <b id="landSummary">No</b></div>
                 <div class="summaryline">Residence <b id="reviewResidence">—</b></div>
                 <div class="summaryline">Electricity <b id="reviewElectricity">—</b></div>
-                <button class="textlink" data-go="assets">Edit assets ↗</button>
+                <button class="textlink" type="button" data-go="assets">Edit assets ↗</button>
               </article>
             </div>
             <div class="privacy">
@@ -585,8 +594,8 @@
               <p>Do not enter real Aadhaar numbers or other highly sensitive data.</p>
             </div>
             <div class="formfoot">
-              <button class="secondary" data-go="assets">← Back to assets</button>
-              <button class="primary" id="finish">Save survey</button>
+              <button class="secondary" type="button" data-go="assets">← Back to assets</button>
+              <button class="primary" type="button" id="finish">Save survey</button>
             </div>
           </section>
         </main>
@@ -599,7 +608,7 @@
       <div class="modal-card">
         <div class="modal-head">
           <h3>Add family member</h3>
-          <button id="close" aria-label="Close">✕</button>
+          <button type="button" id="close" aria-label="Close">✕</button>
         </div>
         <label>
           Member name
@@ -621,8 +630,8 @@
           <input id="newAge" type="number" min="0" max="120" placeholder="e.g. 12" />
         </label>
         <div class="modal-actions">
-          <button class="secondary" id="cancel">Cancel</button>
-          <button class="primary" id="save">Save member</button>
+          <button class="secondary" type="button" id="cancel">Cancel</button>
+          <button class="primary" type="button" id="save">Save member</button>
         </div>
       </div>
     </div>

@@ -34,6 +34,7 @@ The app reads `.env` at startup. Restart `npm start` after changing it. The brow
 - Account sign-up, sign-in, password reset, and sign-out
 - Private survey list and live dashboard counts
 - Household profile, family members, individual details, and land/amenities forms
+- Optional identity-document type viewed checklist; never store document numbers or images
 - Create, review, save, reopen, edit, and delete surveys
 - Automatic update timestamps and account-scoped database policies
 - Responsive layout and attributed Wikimedia Commons minister portraits
