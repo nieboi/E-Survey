@@ -1497,6 +1497,10 @@ input:focus, select:focus {
   opacity: 0.65;
 }
 
+.auth-form :disabled {
+  cursor: not-allowed;
+}
+
 .error-state {
   color: #a61a20;
 }

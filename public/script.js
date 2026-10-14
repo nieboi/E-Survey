@@ -66,6 +66,12 @@
     authFeedback.classList.toggle('error-state', isError);
   }
 
+  function setAuthAvailability(available) {
+    authForm.querySelectorAll('input, button').forEach((control) => {
+      control.disabled = !available;
+    });
+  }
+
   function updateAuthMode() {
     document.getElementById('authTitle').textContent = signUpMode ? 'Create your account' : 'Sign in to continue';
     document.getElementById('authDescription').textContent = signUpMode
@@ -91,7 +97,8 @@
     accountBar.hidden = !currentUser;
     document.getElementById('accountEmail').textContent = currentUser?.email || '';
     recoveryForm.hidden = true;
-    authForm.hidden = Boolean(currentUser) ? true : !supabase;
+    authForm.hidden = Boolean(currentUser);
+    setAuthAvailability(Boolean(supabase));
     if (currentUser) {
       startNewSurvey();
       loadSurveys();
@@ -106,6 +113,8 @@
   async function initializeSupabase() {
     const configMessage = document.getElementById('authConfigMessage');
     const configHelp = document.getElementById('authConfigHelp');
+    authForm.hidden = false;
+    setAuthAvailability(false);
     try {
       const response = await fetch('/api/config', { cache: 'no-store' });
       if (!response.ok) throw new Error(`Supabase configuration request failed (${response.status}).`);
@@ -162,6 +171,7 @@
       });
       configMessage.hidden = true;
       authForm.hidden = false;
+      setAuthAvailability(true);
       supabase.auth.onAuthStateChange((event, session) => {
         window.setTimeout(() => {
           if (event === 'PASSWORD_RECOVERY') {
@@ -178,6 +188,8 @@
     } catch (error) {
       console.error('Supabase initialization failed:', error);
       configMessage.textContent = error.message || 'Could not connect to Supabase.';
+      authForm.hidden = false;
+      setAuthAvailability(false);
       configHelp.hidden = false;
     }
   }

@@ -169,20 +169,20 @@
           <div class="auth-config-message" id="authConfigMessage" role="status">
             Checking the Supabase connection…
           </div>
-          <form class="auth-form" id="authForm" hidden>
+          <form class="auth-form" id="authForm">
             <label>Email address
-              <input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com" />
+              <input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com" disabled />
             </label>
             <label>Password
-              <input id="authPassword" type="password" autocomplete="current-password" required placeholder="Your password" />
+              <input id="authPassword" type="password" autocomplete="current-password" required placeholder="Your password" disabled />
             </label>
             <label id="confirmPasswordLabel" hidden>Confirm password
-              <input id="authPasswordConfirm" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" />
+              <input id="authPasswordConfirm" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" disabled />
             </label>
             <div class="auth-actions">
-              <button class="primary" id="authSubmit" type="submit">Sign in</button>
-              <button class="textlink" id="authModeToggle" type="button">Create an account</button>
-              <button class="textlink" id="resetPassword" type="button">Forgot password?</button>
+              <button class="primary" id="authSubmit" type="submit" disabled>Sign in</button>
+              <button class="textlink" id="authModeToggle" type="button" disabled>Create an account</button>
+              <button class="textlink" id="resetPassword" type="button" disabled>Forgot password?</button>
             </div>
             <p class="auth-feedback" id="authFeedback" aria-live="polite"></p>
           </form>
