@@ -7,9 +7,9 @@ const HOST = '127.0.0.1';
 const PORT = Number(process.env.PORT || 3000);
 const ROOT = __dirname;
 const PUBLIC_FILES = new Map([
-  ['/index.html', ['index.html', 'text/html; charset=utf-8']],
-  ['/script.js', ['script.js', 'text/javascript; charset=utf-8']],
-  ['/styles.css', ['styles.css', 'text/css; charset=utf-8']]
+  ['/index.html', ['public/index.html', 'text/html; charset=utf-8']],
+  ['/script.js', ['public/script.js', 'text/javascript; charset=utf-8']],
+  ['/styles.css', ['public/styles.css', 'text/css; charset=utf-8']]
 ]);
 
 async function loadEnvFile() {
